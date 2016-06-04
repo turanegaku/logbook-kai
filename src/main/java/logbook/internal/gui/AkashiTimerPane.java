@@ -66,7 +66,7 @@ public class AkashiTimerPane extends AnchorPane {
      * @return 時間のテキスト表現
      */
     private static String timeText(Duration d) {
-        return TimeText.format(d, "");
+        return TimeText.format(d, "未使用");
     }
 
     private static class LoggerHolder {

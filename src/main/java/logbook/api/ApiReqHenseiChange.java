@@ -85,11 +85,12 @@ public class ApiReqHenseiChange implements APIListenerSpi {
                         String type = Ships.stype(ship).map(Stype::getName).orElse("");
                         if ("工作艦".equals(type)) {
                             AppCondition.get().setAkashiTimer(System.currentTimeMillis());
-                            break;
+                            return;
                         }
                     }
                 }
             }
+            AppCondition.get().setAkashiTimer(Long.MAX_VALUE);
         }
     }
 
