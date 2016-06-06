@@ -23,7 +23,6 @@ import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
-import logbook.internal.Config;
 import logbook.internal.JsonHelper;
 import logbook.internal.LogWriter;
 import logbook.internal.Logs;
@@ -50,7 +49,6 @@ public class ApiPortPort implements APIListenerSpi {
             this.condition();
             this.akashiTimer();
         }
-        Config.getDefault().store();
     }
 
     /**
