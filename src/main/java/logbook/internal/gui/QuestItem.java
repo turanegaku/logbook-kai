@@ -6,7 +6,9 @@ package logbook.internal.gui;
 import java.util.List;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import logbook.bean.Quest;
@@ -31,7 +33,7 @@ public final class QuestItem {
     private StringProperty state = new SimpleStringProperty();
 
     /** タイトル */
-    private StringProperty title = new SimpleStringProperty();
+    private ObjectProperty<Quest> quest = new SimpleObjectProperty<Quest>();
 
     /** 詳細 */
     private StringProperty detail = new SimpleStringProperty();
@@ -64,7 +66,7 @@ public final class QuestItem {
         this.setCategory(quest.getCategory());
         this.setType(quest.getTypeString());
         this.setState(quest.getStateString());
-        this.setTitle(quest.getTitle());
+        this.setQuest(quest);
         this.setDetail(quest.getDetail());
         this.setFuel(material.get(0));
         this.setAmmo(material.get(1));
@@ -78,7 +80,7 @@ public final class QuestItem {
      * Noを取得します。
      * @return No
      */
-    public IntegerProperty noPropertya() {
+    public IntegerProperty noProperty() {
         return this.no;
     }
 
@@ -171,27 +173,27 @@ public final class QuestItem {
     }
 
     /**
-     * タイトルを取得します。
-     * @return タイトル
+     * クエストを取得します。
+     * @return クエスト
      */
-    public StringProperty titleProperty() {
-        return this.title;
+    public ObjectProperty<Quest> questProperty() {
+        return this.quest;
     }
 
     /**api_detail
-     * タイトルを取得します。
-     * @return タイトル
+     * クエストを取得します。
+     * @return クエスト
      */
-    public String getTitle() {
-        return this.title.get();
+    public Quest getQuest() {
+        return this.quest.get();
     }
 
     /**
-     * タイトルを設定します。
-     * @param タイトル
+     * クエストを設定します。
+     * @param クエスト
      */
-    public void setTitle(String title) {
-        this.title.set(title);
+    public void setQuest(Quest quest) {
+        this.quest.set(quest);
     }
 
     /**

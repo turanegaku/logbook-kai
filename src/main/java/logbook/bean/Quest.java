@@ -206,7 +206,7 @@ public final class Quest implements Serializable {
         case 7:
             return "改装";
         default:
-            return "undf";
+            return "undf"+category;
         }
     }
     // tmp
@@ -221,7 +221,7 @@ public final class Quest implements Serializable {
         case 6:
             return "マンスリー";
         default:
-            return "undf";
+            return "undf"+type;
         }
     }
     // tmp
@@ -240,7 +240,7 @@ public final class Quest implements Serializable {
         case 3:
             return "達成";
         default:
-            return "undf";
+            return "undf"+state;
         }
     }
     // tmp

@@ -9,4 +9,8 @@
    <children>
       <TabPane fx:id="tab" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" />
    </children>
+   <stylesheets>
+      <URL value="@application.css" />
+      <URL value="@quest.css" />
+   </stylesheets>
 </VBox>

@@ -46,6 +46,10 @@ public class QuestTablePane extends VBox {
     @FXML
     private TableColumn<QuestItem, String> type;
 
+    /** 詳細 */
+    @FXML
+    private TableColumn<QuestItem, String> detail;
+
     /** 燃料 */
     @FXML
     private TableColumn<QuestItem, Integer> fuel;
@@ -93,10 +97,11 @@ public class QuestTablePane extends VBox {
         try {
             // カラムとオブジェクトのバインド
             this.no.setCellValueFactory(new PropertyValueFactory<>("no"));
-            this.quest.setCellValueFactory(new PropertyValueFactory<>("title"));
-//            this.quest.setCellFactory(p -> new QuestImageCell());
+            this.quest.setCellValueFactory(new PropertyValueFactory<>("quest"));
+            this.quest.setCellFactory(p -> new QuestImageCell());
             this.exec.setCellValueFactory(new PropertyValueFactory<>("state"));
             this.type.setCellValueFactory(new PropertyValueFactory<>("type"));
+            this.detail.setCellValueFactory(new PropertyValueFactory<>("detail"));
             this.fuel.setCellValueFactory(new PropertyValueFactory<>("fuel"));
             this.ammo.setCellValueFactory(new PropertyValueFactory<>("ammo"));
             this.metal.setCellValueFactory(new PropertyValueFactory<>("metal"));
@@ -146,6 +151,20 @@ public class QuestTablePane extends VBox {
 
             if (!empty) {
 //                this.setGraphic(new ImageView(Ships.shipWithItemImage(ship)));
+
+                ObservableList<String> style = this.getTableRow().getStyleClass();
+                style.removeAll("green", "blue", "grey");
+                switch(quest.getState()) {
+                case 0:
+                    style.add("grey");
+                    break;
+                case 2:
+                    style.add("green");
+                    break;
+                case 3:
+                    style.add("blue");
+                    break;
+                }
                 this.setText(quest.getTitle());
             } else {
                 this.setGraphic(null);
