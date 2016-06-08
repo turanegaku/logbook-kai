@@ -243,6 +243,9 @@ public final class Quest implements Serializable {
             return "undf"+state;
         }
     }
+    public boolean isVisible() {
+        return getState() != 0;
+    }
     // tmp
     public String toString(){
         return (state==2?"*":"") + getTypeString()+ getCategoryString() +':'+ title + (state==2? "(" + this.progressFlag + ")" : "");

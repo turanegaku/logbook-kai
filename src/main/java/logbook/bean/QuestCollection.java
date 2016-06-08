@@ -39,7 +39,9 @@ public class QuestCollection implements Serializable {
                 .collect(Collectors.toList());
         int minv = no.get(0);
         int maxv = no.get(no.size() - 1);
-        Collection<Integer> c = quest.keySet().stream()
+        Collection<Integer> c = quest.values().stream()
+                .filter(Quest::isVisible)
+                .map(Quest::getNo)
                 .filter(n -> minv <= n && n <= maxv)
                 .collect(Collectors.toList());
         c.removeAll(quests.keySet());
