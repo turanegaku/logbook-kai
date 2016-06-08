@@ -38,7 +38,6 @@ public class QuestController extends WindowController {
 
             QuestTablePane allPane = new QuestTablePane(() -> {
                 return quests.stream()
-                        // TODO ここでのソートは無意味?
                         .sorted(Comparator.comparing(Quest::getNo))
                         .sorted(Comparator.comparing(Quest::getState).reversed())
                         .collect(Collectors.toList());

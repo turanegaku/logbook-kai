@@ -1,0 +1,27 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+TabPane .grey .cell {
+    -fx-text-fill: lightgrey;
+}
+
+TabPane .green {
+    -fx-background-color: #80ff80;
+}
+TabPane .green:selected {
+    -fx-background-color: #20ff20;
+    -fx-table-cell-border-color: transparent;
+}
+TabPane .green:selected .cell {
+    -fx-text-fill: darkgreen;
+}
+
+TabPane .blue {
+    -fx-background-color: #a0a0ff;
+}
+TabPane .blue:selected {
+    -fx-background-color: #8080ff;
+    -fx-table-cell-border-color: transparent;
+}
+TabPane .blue:selected .cell {
+    -fx-text-fill: darkblue;
+}
