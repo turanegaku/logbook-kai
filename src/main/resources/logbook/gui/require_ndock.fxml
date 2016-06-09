@@ -5,8 +5,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="ndockWindow" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logbook.internal.gui.RequireNdockController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="ndockWindow" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logbook.internal.gui.RequireNdockController">
    <children>
+      <CheckBox fx:id="slight_filter" mnemonicParsing="false" onAction="#update" text="小破フィルタ" />
       <TableView fx:id="table" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="id" prefWidth="50.0" text="ID" />

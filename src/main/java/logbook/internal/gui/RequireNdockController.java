@@ -5,6 +5,7 @@ import java.util.Comparator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -17,6 +18,9 @@ import logbook.bean.ShipMst;
 import logbook.internal.Ships;
 
 public class RequireNdockController extends WindowController {
+
+    @FXML
+    private CheckBox slight_filter;
 
     @FXML
     private TableView<RequireNdock> table;
@@ -67,14 +71,21 @@ public class RequireNdockController extends WindowController {
         this.table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         this.table.setOnKeyPressed(TableTool::defaultOnKeyPressedHandler);
 
+        update();
+    }
+    
+    @FXML
+    private void update() {
+        ndocks.clear();
         ShipCollection.get()
-                .getShipMap()
-                .values()
-                .stream()
-                .filter(s -> s.getNdockTime() > 0)
-                .sorted(Comparator.comparing(Ship::getNdockTime, Comparator.reverseOrder()))
-                .map(RequireNdock::toRequireNdock)
-                .forEach(this.ndocks::add);
+        .getShipMap()
+        .values()
+        .stream()
+        .filter(s -> s.getNdockTime() > 0)
+        .filter(s -> !slight_filter.isSelected() || Ships.isSlightDamage(s) || Ships.isLessThanSlightDamage(s))
+        .sorted(Comparator.comparing(Ship::getNdockTime, Comparator.reverseOrder()))
+        .map(RequireNdock::toRequireNdock)
+        .forEach(this.ndocks::add);
     }
 
     /**
