@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import logbook.bean.Quest;
 import logbook.bean.QuestCollection;
@@ -87,7 +88,7 @@ public class QuestController extends WindowController {
     @Override
     public void setWindow(Stage window) {
         super.setWindow(window);
-        window.setOnHidden(e -> this.timeline.stop());
+        window.addEventHandler(WindowEvent.WINDOW_HIDDEN, e -> this.timeline.stop());
     }
 
     private static class LoggerHolder {
